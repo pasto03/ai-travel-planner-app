@@ -1,0 +1,18 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "components/Login.jsx",
+    "app/(tabs)/_layout.jsx",
+    "app/_layout.jsx"
+, "app/trip-details/index.jsx", "configs/props/zod.js"  ]
+}
