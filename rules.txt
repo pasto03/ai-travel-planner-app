@@ -1,0 +1,20 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    
+    match /Feedback/{feedbackId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null 
+        && request.resource.data.userEmail == request.auth.token.email
+        && request.resource.data.rating is number
+        && request.resource.data.rating >= 1
+        && request.resource.data.rating <= 5
+        && request.resource.data.feedback is string
+        && request.resource.data.feedback.size() > 0;
+    }
+  }
+}
